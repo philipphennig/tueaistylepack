@@ -12,8 +12,8 @@ These documents have matching style sheets in the [`tueplots`](https://tueplots.
 
 If you would like to contribute to this repository, please feel free to open an issue or a pull request. In particular, we welcome proposals for templates for posters, and PhD theses.
 
-## Contributors:
+## Contributors
 
 This repo is maintained by Philipp Hennig, who also wrote the thesis template. The beamer template is based on an earlier template built by Philipp Hennig and Marvin Pförtner. 
 
-The color scheme, the Tübingen AI Logo, and various other design assets were developed by Franziska Schwarz. 
+The color scheme, the Tübingen AI Logo, and various other design assets were developed by [Franziska Schwarz](https://www.franziska-schwar.de). 
