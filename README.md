@@ -14,6 +14,6 @@ If you would like to contribute to this repository, please feel free to open an 
 
 ## Contributors
 
-This repo is maintained by Philipp Hennig, who also wrote the thesis template. The beamer template is based on an earlier template built by Philipp Hennig and Marvin Pförtner. 
+This repo is maintained by Philipp Hennig, who also wrote the thesis template. The beamer template is based on an earlier template built by Philipp Hennig and Marvin Pförtner. We are grateful to Peter Nicholas Krämer for maintaining `tueplots`, including the hooks in there for this style pack.
 
 The color scheme, the Tübingen AI Logo, and various other design assets were developed by [Franziska Schwarz](https://www.franziska-schwar.de). 
