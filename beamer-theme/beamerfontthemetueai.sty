@@ -1,0 +1,51 @@
+\RequirePackage{iftex}
+
+\ifLuaTeX
+    \RequirePackage{fontspec}
+
+    \newfontfamily{\titlefont}{PlusJakartaSans}[Scale=MatchUppercase]
+
+    \setmainfont{Roboto Condensed Light}[
+        ItalicFont=RobotoCondensed-LightItalic,
+        BoldFont=RobotoCondensed-Regular,
+        BoldItalicFont=RobotoCondensed-Italic,
+        Ligatures=TeX,
+    ]
+    \setsansfont{Roboto Condensed Light}[
+        ItalicFont=RobotoCondensed-LightItalic,
+        BoldFont=RobotoCondensed-Regular,
+        BoldItalicFont=RobotoCondensed-Italic,
+        Ligatures=TeX,
+    ]
+    \setmonofont[Ligatures=TeX,Scale = 0.9]{Roboto Mono}
+\else\ifXeTeX
+        \RequirePackage{mathspec}
+
+        \newfontfamily{\titlefont}{PlusJakartaSans}[Scale=MatchUppercase]
+
+        \setallmainfonts(Digits,Latin)[Ligatures=TeX]{Roboto Condensed Light}
+        \setallsansfonts[Ligatures=TeX]{Roboto Condensed Light}
+        \setallmonofonts[Ligatures=TeX,Scale=0.9]{Roboto Mono}
+    \else
+        \RequirePackage[sfdefault,light,condensed]{roboto}
+        \RequirePackage[T1]{fontenc}
+    \fi\fi
+
+\setbeamerfont{title}{family=\titlefont,series=\bfseries}
+\setbeamerfont{subtitle}{parent=title,series=\mdseries}
+\setbeamerfont{author}{parent=subtitle,series=\mdseries}
+\setbeamerfont{institute}{parent=subtitle,series=\mdseries}
+\setbeamerfont{date}{parent=subtitle,series=\mdseries}
+
+%%%%%%%%%%%%%%%
+% Inner Theme %
+%%%%%%%%%%%%%%%
+
+% Block Environments
+\setbeamerfont{block title}{size=\normalsize}
+
+% Verse, Quotations, Quotes
+\newfontfamily{\quotefont}{PlusJakartaSans-Medium}
+
+\setbeamerfont{quotation}{family=\quotefont}
+\setbeamerfont{quote}{family=\quotefont}

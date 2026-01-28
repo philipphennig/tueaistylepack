@@ -1,0 +1,99 @@
+\RequirePackage{tikz}
+
+\newenvironment{ribbon}{\usebeamertemplate{ribbon begin}}{\usebeamertemplate{ribbon end}}
+
+\mode<presentation>
+
+% Itemizations, Enumerations and Descriptions
+\newcommand{\tueitem}[1][TueAIlightblue]{%
+    \begin{tikzpicture}[baseline=(current bounding box.south)]
+        \fill[fill=#1,scale=\baselineskip * 0.12] (0.424853,-.930) -- (.333,-.967264) -- (.333,-1.11178) -- (.424853,-1.09059) -- cycle;
+    \end{tikzpicture}}
+
+\setbeamertemplate{itemize item}{\tueitem[TueAIaccent]}
+\setbeamertemplate{itemize subitem}{\tueitem[TueAIlightblue]}
+\setbeamertemplate{itemize subsubitem}{\tueitem[TueAIoceanblue]}
+
+
+% Bibliography
+\setbeamertemplate{bibliography item}[triangle]
+
+% Ribbons
+\setbeamertemplate{ribbon begin}{%
+    \vspace{.3em}
+    \vbox{}
+    \begin{beamercolorbox}[wd=\paperwidth,colsep*=.3em,center]{ribbon}%
+        \setbeamercolor{structure}{parent=ribbon structure}%
+        \setbeamercolor*{item}{parent=ribbon item}%
+        \setbeamercolor*{item projected}{parent=ribbon item projected}%
+        \setbeamercolor*{alerted text}{parent=ribbon alerted text}%
+        \begin{minipage}{1.0\textwidth}\noindent%
+            }
+            \setbeamertemplate{ribbon end}{%
+        \end{minipage}%
+    \end{beamercolorbox}%
+    % \vspace{.3em}
+}
+
+% Title Page
+\defbeamertemplate*{title page}{tueai}[1][]
+{
+    \begin{tikzpicture}[remember picture,overlay]
+
+        % \node[anchor=south east,xshift=1mm,inner sep=0,scope fading=west] at (current page.south east){\includegraphics[height=\paperheight]{beamerthemetueaigraphics/251014_Neubau_CyberValley-TU_002.jpg}};
+
+        \node[anchor=south,yshift=-0.2 * 0.1327 * \paperwidth] (footer image) at (current page.south) {};
+        \node[anchor=west,xshift=-3mm] (logo) at (current page.west) {\includegraphics[height=\paperheight]{beamerthemetueaigraphics/Logo_rotated_color.pdf}};
+        \node[anchor=center,xshift=.1\paperwidth] at (current page.center) {%
+            \begin{minipage}[c][\dimexpr\paperheight-0.1062\paperwidth-2em\relax][c]{\textwidth}
+                \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+                    \usebeamerfont{title}\inserttitle\par%
+                    \ifx\insertsubtitle\@empty%
+                    \else%
+                        \vskip0.25em%
+                        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+                    \fi%
+                \end{beamercolorbox}%
+                \ifx\insertauthor\@empty%
+                \else%  
+                    \vskip.5em\par
+                    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+                        \usebeamerfont{author}\insertauthor
+                    \end{beamercolorbox}%
+                \fi%
+                \ifx\insertinstitute\@empty%
+                \else%
+                    \begin{beamercolorbox}[sep=4pt,center,#1]{institute}
+                        \usebeamerfont{institute}\insertinstitute
+                    \end{beamercolorbox}%
+                    \vskip.3em\par
+                \fi%
+                \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+                    \usebeamerfont{date}\insertdate
+                \end{beamercolorbox}%
+                % \vskip.3em\par
+                % \begin{beamercolorbox}[sep=8pt,center,#1]{titlegraphic}
+                %     \inserttitlegraphic
+                % \end{beamercolorbox}
+                \vfill
+            \end{minipage}
+        };
+        \node[anchor=north east,yshift=-3mm, xshift=-5mm] at (current page.north east) {\includegraphics[width=2.5cm]{beamerthemetueaigraphics/TUEAI_Logo_hor-URL-maxi_RGB.pdf}};
+        \node[anchor=south east,yshift=3mm, xshift=-3mm] at (current page.south east)
+        % {\includegraphics[width=2.5cm]{beamerthemetueaigraphics/UT_WBMW_Rot_RGB.pdf}\hspace{5mm}%
+        % \includegraphics[width=2.5cm]{beamerthemetueaigraphics/MPI-IS-WortBildMarke.png}};
+        {\includegraphics[width=8cm]{beamerthemetueaigraphics/Uni-coop-MPI.pdf}};
+    \end{tikzpicture}
+}
+
+\newcommand{\TueAITitleGraphic}{%
+    \begin{columns}
+        \column{0.3\textwidth}
+        \column{0.4\textwidth}
+        \includegraphics[width=\textwidth]{beamerthemetueaigraphics/TUEAI_Logo_hor-URL-maxi_RGB.pdf}
+        \column{0.3\textwidth}
+    \end{columns}
+    \vspace*{3cm}
+}
+
+\mode<all>

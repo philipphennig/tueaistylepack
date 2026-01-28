@@ -1,0 +1,73 @@
+\RequirePackage{tabularx}
+
+\mode<presentation>
+
+\setbeamertemplate{navigation symbols}{}
+
+\defbeamertemplate*{frametitle}{tueai}[1][left]
+{%
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+    \begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1ex%
+        \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+        \parbox{\dimexpr\linewidth-0.6cm\relax}{%
+            \strut%
+            \insertframetitle%
+            \hfill%
+            \smash{\includegraphics[height=1.0em]{beamerthemetueaigraphics/TUEAI_Symbol_inv_RGB.pdf}}%
+            \strut%
+        }%
+        \par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+                \else%
+                {%
+                    \usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}%
+                    \parbox{\dimexpr\linewidth-0.6cm\relax}{\strut\insertframesubtitle\strut}%
+                    \par%
+                }%
+            \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+
+\setbeamertemplate{page number in head/foot}[framenumber]
+
+\defbeamertemplate*{footline}{tueai}
+{%
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=1.001\paperwidth,ht=3ex,dp=1.5ex,leftskip=.3cm,rightskip=.3cm,sep=0pt]{footline}
+            {%
+                \usebeamerfont{title in head/foot}\usebeamercolor[fg]{title in head/foot}%
+                \insertshorttitle
+            }%
+            {%
+                \ifx\insertshortauthor\@empty%
+                \else%
+                    \ --- \
+                    \usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}%
+                    \insertshortauthor
+                \fi
+            }%
+            \ --- \
+            {%
+            \usebeamerfont{date in head/foot}\usebeamercolor[fg]{date in head/foot}%
+            \insertshortdate
+            }%
+            \hfill%
+            \usebeamercolor[fg]{page number in head/foot}%
+            \usebeamerfont{page number in head/foot}%
+            \usebeamertemplate{page number in head/foot}%
+        \end{beamercolorbox}
+    }%
+    \vskip0pt%
+}
+
+\mode<all>

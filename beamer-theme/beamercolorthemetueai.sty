@@ -1,0 +1,147 @@
+\RequirePackage{colortbl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Color scheme of the Eberhard-Karls University %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% According to the Corporate Design, all of these colors may
+% lightened in steps of 10% e.g. via TUred!30!white
+
+% Primary Colors
+\definecolor{TUred}{RGB}{165,30,55}
+\definecolor{TUgold}{RGB}{180,160,105}
+\definecolor{TUdark}{RGB}{50,65,75} % #32414b
+\definecolor{TUgray}{RGB}{175,179,183}
+
+% Secondary Colors
+\definecolor{TUdarkblue}{RGB}{65,90,140}
+\definecolor{TUblue}{RGB}{0,105,170}
+\definecolor{TUlightblue}{RGB}{80,170,200}
+\definecolor{TUlightgreen}{RGB}{130,185,160}
+\definecolor{TUgreen}{RGB}{125,165,75}
+\definecolor{TUdarkgreen}{RGB}{50,110,30}
+\definecolor{TUocre}{RGB}{200,80,60}
+\definecolor{TUviolet}{RGB}{175,110,150}
+\definecolor{TUmauve}{RGB}{180,160,150}
+\definecolor{TUbeige}{RGB}{215,180,105}
+\definecolor{TUorange}{RGB}{210,150,0}
+\definecolor{TUbrown}{RGB}{145,105,70}
+
+% color scheme of the AI center
+% b/w
+\definecolor{TueAIdark}{RGB}{56,56,56}
+\definecolor{TueAIgray}{RGB}{246,246,246}
+% primary colors
+\definecolor{TueAIdarkblue}{RGB}{26,58,91}
+\definecolor{TueAIaccent}{RGB}{234,75,46}
+\definecolor{TueAIlightblue}{RGB}{133,203,210}
+% secondary colors
+\definecolor{TueAIoceanblue}{RGB}{119,221,204}
+\definecolor{TueAIoceangreen}{RGB}{119,221,159}
+\definecolor{TueAIspringgreen}{RGB}{186,213,72}
+\definecolor{TueAIbrightyellow}{RGB}{255,221,0}
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%
+% Outer Theme %
+%%%%%%%%%%%%%%%
+
+% Frame Title
+\setbeamercolor{frametitle}{bg=TueAIdarkblue,fg=white}
+\setbeamercolor{frametitle right}{bg=TueAIdarkblue}
+\setbeamercolor{framesubtitle}{bg=TueAIlightblue,fg=TueAIdarkblue!30!white}
+
+% Frame Footline
+\setbeamercolor{footline}{fg=TueAIdark}
+
+\setbeamercolor{title in head/foot}{parent=footline}
+\setbeamercolor{author in head/foot}{parent=footline}
+\setbeamercolor{date in head/foot}{parent=footline}
+\setbeamercolor{page number in head/foot}{parent=footline}
+
+%%%%%%%%%%%%%%%
+% Inner Theme %
+%%%%%%%%%%%%%%%
+
+\setbeamercolor{normal text}{fg=TueAIdark,bg=white}
+\setbeamercolor{titlelike}{parent=structure}
+
+% Itemizations, Enumerations and Descriptions
+\setbeamercolor{item}{fg=TueAIaccent}
+\setbeamercolor{item projected}{fg=white,bg=TueAIaccent}
+
+\setbeamercolor{description item}{parent=alerted text}
+
+% Highlighting
+\setbeamercolor{structure}{fg=TueAIdarkblue}
+
+\setbeamercolor{alerted text}{fg=TueAIaccent}
+
+% Block Environments
+\setbeamercolor{block title}{fg=white,bg=TueAIlightblue}
+\setbeamercolor{block body}{parent=normal text,bg=TueAIlightblue!20!white}
+
+\setbeamercolor{block title alerted}{fg=white,bg=TueAIaccent}
+\setbeamercolor{block body alerted}{parent=block body,use=block title alerted,bg=block title alerted.bg!20!white}
+
+\setbeamercolor{block title example}{fg=white,bg=TueAIspringgreen}
+\setbeamercolor{block body example}{parent=block body,use=block title example,bg=block title example.bg!10!white}
+
+% Ribbons
+\setbeamercolor{ribbon}{fg=TueAIdarkblue,bg=TueAIbrightyellow}
+
+\setbeamercolor{ribbon structure}{fg=TueAIaccent}
+\setbeamercolor{ribbon item}{fg=TueAIdarkblue}
+\setbeamercolor{ribbon item projected}{fg=white,bg=TueAIdarkblue}
+\setbeamercolor{ribbon alerted text}{fg=TueAIaccent}
+
+% Title page
+\setbeamercolor{title}{fg=TueAIdarkblue}
+\setbeamercolor{subtitle}{fg=TueAIlightblue}
+\setbeamercolor{author}{fg=TueAIaccent}
+\setbeamercolor{date}{fg=TueAIlightblue}
+
+% Misc
+\arrayrulecolor{AIcentergray}
+
+\mode<all>
+
+\newcommand*{\darkcolors}{%
+    \mode<presentation>%
+    %
+    %%%%%%%%%%%%%%%
+    % Outer Theme %
+    %%%%%%%%%%%%%%%
+    \setbeamercolor{frametitle}{bg=TueAIdark,fg=white}
+    \setbeamercolor{frametitle right}{bg=white}
+    \setbeamercolor{framesubtitle}{fg=TueAIdark!30!white}
+
+    % Frame Footline
+    \setbeamercolor{footline}{fg=TueAIdark!30!white}%
+    %
+    %%%%%%%%%%%%%%%
+    % Inner Theme %
+    %%%%%%%%%%%%%%%
+    %
+    \setbeamercolor{normal text}{fg=white,bg=TueAIdark}%
+    %
+    % Itemizations, Enumerations and Descriptions
+    \setbeamercolor{item}{fg=white}
+    \setbeamercolor{item projected}{fg=TueAIdark}
+    %
+    % Highlighting
+    \setbeamercolor{structure}{fg=white}%
+    %
+    \setbeamercolor{alerted text}{fg=TueAIaccent}%
+    %
+    % Ribbons
+    \setbeamercolor{ribbon}{fg=TueAIdark,bg=white}
+
+    \setbeamercolor{ribbon structure}{fg=TueAIaccent}
+    \setbeamercolor{ribbon item}{fg=TueAIdark}
+    \setbeamercolor{ribbon item projected}{fg=white,bg=TueAIdark}
+    \setbeamercolor{ribbon alerted text}{fg=TueAIdarkblue}
+    %
+    \mode<all>%
+}

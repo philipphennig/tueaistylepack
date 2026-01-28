@@ -1,0 +1,182 @@
+\RequirePackage{xargs}
+
+\usefonttheme{tueai}
+\usecolortheme{tueai}
+
+\useinnertheme{tueai}
+\useoutertheme{tueai}
+
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    allcolors = TueAIaccent}
+
+% improving underline
+\RequirePackage{contour}
+\RequirePackage[normalem]{ulem}
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\renewcommand{\underline}[1]{%
+    \uline{\phantom{#1}}%
+    \llap{\contour{white}{#1}}%
+}
+
+\newcommand{\underlinecol}[2][white]{%
+    \uline{\phantom{#2}}%
+    \llap{\contour{#1}{#2}}%
+}
+
+\newcommand{\link}[2]{%
+    \href{\detokenize{#1}}{\underline{#2}}%
+}
+
+\newcommand{\srccite}[2]{%
+    \hfill\href{\detokenize{#1}}{\underlinecol[TueAIdarkblue]{#2}}%
+}
+
+%%%%%%%%%%%%%%%%%%
+% Special Frames %
+%%%%%%%%%%%%%%%%%%
+
+% Dark Frames
+\newenvironment{darkframe}[1][\@empty]{%
+    \begingroup%
+    \darkcolors%
+    \begin{frame}[#1]%}
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=north east,xshift=-1.8mm,yshift=-.45mm] at (current page.north east)
+            {\includegraphics[height=1.4em]{beamerthemetueaigraphics/TUEAI_Symbol_white_RGB.pdf}};
+        \end{tikzpicture}
+        \usebeamercolor[fg]{normal text}%
+        }{%
+    \end{frame}%
+    \endgroup%
+}
+
+% Black Slide
+\newcommand*{\blackslide}{%
+    {\setbeamercolor{background canvas}{bg=black}%
+            \begin{frame}[plain]%
+                \null%
+            \end{frame}}%
+}
+
+%%%%%%%%%%%%%%%
+% Side Images %
+%%%%%%%%%%%%%%%
+
+\usetikzlibrary{fadings}
+
+\newcommand{\EastGradImage}[2][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifnum#1=1
+            \node[anchor=south east,xshift=1mm,inner sep=0,scope fading=west] at (current page.south east){\includegraphics[height=.86\paperheight]{#2}};
+        \else
+            \node[anchor=south east,xshift=1mm,inner sep=0] at (current page.south east){\includegraphics[height=.86\paperheight]{#2}};
+        \fi
+    \end{tikzpicture}%
+}
+
+\newcommand{\EastGradPerson}[3][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifnum#1=1
+            \node[anchor=south east,xshift=1mm,inner sep=0,scope fading=west] at (current page.south east){\includegraphics[height=.86\paperheight]{#2}};
+        \else
+            \node[anchor=south east,xshift=1mm,inner sep=0] at (current page.south east){\includegraphics[height=.86\paperheight]{#2}};
+        \fi
+        %
+        \node[fill=white,text=TUdark,anchor=south east,yshift=1cm] at (current page.south east) {\scriptsize #3};
+    \end{tikzpicture}%
+}
+
+\newcommand{\EastGradImageFullHeight}[2][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifnum#1=1
+            \node[anchor=south east,xshift=1mm,inner sep=0,scope fading=west] at (current page.south east){\includegraphics[height=\paperheight]{#2}};
+        \else
+            \node[anchor=south east,xshift=1mm,inner sep=0] at (current page.south east){\includegraphics[height=\paperheight]{#2}};
+        \fi
+    \end{tikzpicture}%
+}
+
+\newcommand{\WestGradImage}[2][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifnum#1=1
+            \node[anchor=south west,xshift=-1mm,inner sep=0,scope fading=east] at (current page.south west){\includegraphics[height=.86\paperheight]{#2}};
+        \else
+            \node[anchor=south west,xshift=-1mm,inner sep=0] at (current page.south west){\includegraphics[height=.86\paperheight]{#2}};
+        \fi
+    \end{tikzpicture}
+}
+
+% third, optional argument decides whether to use fading (default) or not: 1 = use fading, 0 = do not use fading
+\newcommand{\WestGradPerson}[3][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        % \node[anchor=south west,xshift=-1mm,inner sep=0,scope fading=east] at (current page.south west)
+        \ifnum#1=1
+            \node[anchor=south west,xshift=-1mm,inner sep=0,scope fading=east] at (current page.south west) {\includegraphics[height=.86\paperheight]{#2}};
+        \else
+            \node[anchor=south west,xshift=-1mm,inner sep=0] at (current page.south west) {\includegraphics[height=.86\paperheight]{#2}};
+        \fi
+        %
+        \node[fill=white,text=TUdark,anchor=south west,yshift=1cm] at (current page.south west) {\scriptsize #3};
+    \end{tikzpicture}%
+}
+
+\newcommand{\WestGradImageFullHeight}[2][1]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifnum#1=1
+            \node[anchor=south west,xshift=-1mm,inner sep=0,scope fading=east] at (current page.south west){\includegraphics[height=\paperheight]{#2}};
+        \else
+            \node[anchor=south west,xshift=-1mm,inner sep=0] at (current page.south west){\includegraphics[height=\paperheight]{#2}};
+        \fi
+    \end{tikzpicture}%
+}
+
+%%%%%%%%%%%%%%%
+% Code Blocks %
+%%%%%%%%%%%%%%%
+
+\RequirePackage{tcolorbox}
+\tcbset{colback=TueAIgray,colframe=TueAIdarkblue, size=small, coltext=TueAIdarkblue}
+\tcbuselibrary{most}
+
+\RequirePackage{listings}
+\newcommand\pythonstyle{\lstset{
+        language=Python,
+        otherkeywords={self},             % Add keywords here
+        basicstyle=\scriptsize\ttfamily,
+        numbers=left,
+        numberstyle=\tiny\color{TueAIbrightyellow},
+        stepnumber=1,
+        numbersep=8pt,
+        keywordstyle=\bfseries\color{TueAIaccent},
+        morekeywords={await, super},
+        emph={MyClass,__init__,@, Float, Array, Int},          % Custom highlighting
+        emphstyle=\itshape\color{TueAIdarkblue},    % Custom highlighting style
+        emph={[2]cholesky,cho_solve,cho_factor,rand,randn,randint, exp, log, sqrt, abs, min, max},
+        emphstyle={[2]\itshape\color{TueAIoceanblue}},    % Custom highlighting style
+        emph={[3]grad, vmap, jit, hessian},    % Custom highlighting
+        emphstyle={[3]\bfseries\color{TueAIaccent}},    % Custom highlighting style
+        stringstyle=\color{TueAIoceangreen},
+        commentstyle=\color{TueAIlightblue},
+        frame=none,                         % Any extra options here
+        showstringspaces=false            %
+    }}
+
+% % Python environment
+\lstnewenvironment{python}[1][]{\pythonstyle\lstset{#1}}{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+            \pythonstyle
+            \lstinputlisting[#1]{#2}}}
+
+
+\newcommand{\pythonblock}[2][]{\begin{tcolorbox}[leftrule=10pt,top=-2mm, bottom=-2mm]\pythonexternal[#1]{#2}\end{tcolorbox}}
+
+\mode<presentation>
+
+\mode<all>

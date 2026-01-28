@@ -1,0 +1,173 @@
+%!LW recipe=latexmk (latexmkrc)
+
+\documentclass[10pt,aspectratio=169]{beamer}
+
+\usetheme{tueai}
+
+\title[Tübingen.ai Beamer Theme]{The Tübingen.ai Beamer Theme}
+\subtitle{A style pack for presentations and publications}
+\author[P.~Hennig]{Philipp Hennig}
+\institute{Tübingen AI Center, Tübingen, Germany}
+\date{January 2026}
+
+\begin{document}
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}{Welcome!}{to the tue ai beamer theme}
+
+    \EastGradImage{../beamerthemetueaigraphics/Floor_5.jpg}
+
+    \begin{columns}
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item This is the example presentation for the \texttt{tueai} beamer theme of the \link{https://tuebingen.ai}{Tübingen AI Center}.
+            \item The style pack is intended for use by all faculty, employees, \emph{and students} of the AI Center (yes, this includes BSc/MSc students, if affiliated with a research group at the center).
+            \item If you have any proposals for improvements, please file a PR in the \link{https://github.com/philipphennig/tueaistylepack}{repo}.
+            \item \alert{Important note:} All graphics, logos, and other assets are the property of their respective owners, and ``all rights reserved''. Faculty, employees and students of the AI center are allowed to use the logo for scientific presentations and publications. If you are in doubt about proper use, contact the AI center executive office.
+        \end{itemize}
+        \column{.4\textwidth}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Test}
+    \frametitle{Itemizations, Enumerations, and Descriptions}
+    \framesubtitle{Itemizations and Enumerations}
+    %
+    There are three \alert{important} points:
+    %
+    \begin{enumerate}
+        \item A first one,
+        \item a second one with a bunch of subpoints,
+              \begin{itemize}
+                  \item first subpoint.
+                  \item second subpoint.
+                  \item third subpoint.
+              \end{itemize}
+        \item and a third one.
+    \end{enumerate}
+    Here is some math:
+    \[ p(D\mid \mu,k) = \int \mathcal{N}(D; f(X), \sigma^2 I) \cdot \mathcal{GP}(f\mid \mu,k) \, \mathrm{d}f = \mathcal{N}(D; \mu_X, k_{XX} + \sigma^2 I) \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Itemizations, Enumerations, and Descriptions}
+    \framesubtitle{Descriptions}
+    \begin{description}[longest label]
+        \item[short] Some text.
+        \item[longest label] Some text.
+        \item[long label] Some text.
+    \end{description}
+\end{frame}
+
+\begin{frame}{Plots with \texttt{tueplots}}{plots that fit the slide. Every time. \srccite{https://tueplots.readthedocs.io}{pip install tueplots}}
+
+    \begin{center}
+        \includegraphics{../../tueplots-demo/tueplots_example_beamer_tueai.pdf}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Plots with \texttt{tueplots}}{plots that fit the slide. Every time.}
+
+    \begin{columns}
+        \column{0.6\textwidth}
+        The \href{https://tueplots.readthedocs.io}{\texttt{tueplots} package} generates stylesheets for matplotlib. Making this plot is as easy as
+        \pythonblock{tueplots_minimal_example.py}
+        By the way, this is a python code block.
+        \column{0.4\textwidth}
+        \begin{center}
+            \includegraphics{../../tueplots-demo/tueplots_example_beamer_tueai_withwidth.pdf}
+        \end{center}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Block Environments}
+    \framesubtitle{in different styles}
+    %
+    \begin{block}{Block}
+        A \alert{regular} block.
+    \end{block}
+    %
+    \begin{alertblock}{Alerted Block}
+        An \alert{alerted} block.
+    \end{alertblock}
+    %
+    \begin{exampleblock}{Example Block}
+        An \alert{example} block.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem Environments}
+    \framesubtitle{Theorems and Proofs \hfill Test}
+    %
+    \begin{theorem}
+        There is \alert{no largest} prime number.
+    \end{theorem}
+    %
+    \begin{proof}
+        \begin{enumerate}
+            \item<1-| alert@1> Suppose $p$ were the largest prime number.
+            \item<2-> Let $q$ be the product of the first $p$ numbers.
+            \item<3-> Then $q+1$ is not divisible by any of them.
+            \item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
+                  number not in the first $p$ numbers.
+        \end{enumerate}
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Images}{with and without gradient, in matched colors}
+
+    \WestGradPerson{beamerthemetueaigraphics/Valentin_Braitenberg_tonematched.png}{Valentin Braitenberg (1926--2011)}
+
+    \begin{columns}
+        \column{.3\textwidth}
+        \column{.7\textwidth}
+        Full height images can be put on the left side of the page with \texttt{\textbackslash{}WestGradPerson\{filepath\}\{caption\}} command. There is also a \texttt{\textbackslash{}EastGradPerson\{filepath\}\{caption\}} for the right side, and a \texttt{\textbackslash{}EastGradImage\{filepath\}}, \texttt{\textbackslash{}WestGradImage\{filepath\}} without caption. The optional Boolean \texttt{\textbackslash{}WestGradImage[0]\{filepath\}} disables the fading to transparency.\\
+
+        You can use the little utility script \texttt{change\_image\_color.py} to make an image B/W and match the tone to the tue ai color theme (see the docstring of that file for more information).
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ribbons}
+    \framesubtitle{can be used to call out important information}
+    %
+    \begin{ribbon}
+        There are three \alert{important} points:
+        %
+        \begin{enumerate}
+            \item A first one,
+            \item a second one with a bunch of subpoints,
+                  \begin{itemize}
+                      \item first subpoint.
+                      \item second subpoint.
+                      \item third subpoint.
+                  \end{itemize}
+            \item and a third one.
+        \end{enumerate}
+    \end{ribbon}
+\end{frame}
+
+\begin{darkframe}
+
+
+    On dark frames, normal text is white. \alert{Alerted text} remains accented. Darkframes also have a \texttt{\textbackslash{}frametitle} and \texttt{\textbackslash{}framesubtitle}, but their use is not encouraged, to increase visual contrast.
+
+    \vfill
+    %
+    \begin{ribbon}%
+        Ribbons become white, with dark text
+    \end{ribbon}
+    %
+\end{darkframe}
+
+\blackslide
+\end{document}
