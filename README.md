@@ -5,7 +5,7 @@ This repository contains templates for documents under the branding of the Tübi
 
 The pack currently contains the following LaTeX assets:
 * a template for beamer slides, with various macros, available in the `beamer-theme` directory
-* a template for Master's and Bachelor's theses that follows the content guidelines of the Tübingen CS department, available in the `thesis` directory. 
+* a template for Master's and Bachelor's theses that follows the content guidelines of the Tübingen CS department, available in the `thesis-template` directory. 
  
 These documents have matching style sheets in the [`tueplots`](https://tueplots.readthedocs.io/) python library, which can be used to generate plots that match the style of the documents.
 
