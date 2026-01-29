@@ -1,0 +1,248 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuebingen_cs_thesis/tuebingen_cs_thesis}[2025/11/20 v0.1 Tuebingen CS Thesis Style]
+
+% =============================================================================
+% Options
+% =============================================================================
+
+\newif\if@master
+\newif\if@bachelor
+\newif\if@german
+\newif\if@english
+
+\DeclareOption{master}{\@mastertrue\@bachelorfalse}
+\DeclareOption{bachelor}{\@bachelortrue\@masterfalse}
+\DeclareOption{german}{\@germantrue\@englishfalse}
+\DeclareOption{english}{\@englishtrue\@germanfalse}
+
+\ExecuteOptions{master,english} % Defaults
+\ProcessOptions\relax
+
+% =============================================================================
+% Dependencies
+% =============================================================================
+
+% Language settings
+\if@german
+    \RequirePackage[ngerman]{babel}
+\else
+    \RequirePackage[english]{babel}
+\fi
+
+% Graphics and Colors
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{tuebingen_cs_thesis/colortheme_tueai}
+
+% Fonts and Typography
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern} % Improved Computer Modern
+\RequirePackage{titlesec}
+\RequirePackage{amssymb} % For checkboxes
+\RequirePackage{fancyhdr} % For custom headers and footers
+\RequirePackage{booktabs} % For nicer tables
+\RequirePackage{array} % For table column styling
+\RequirePackage[nottoc]{tocbibind} % Add lists to TOC
+\RequirePackage[round, authoryear]{natbib} % Bibliography
+\RequirePackage{lastpage} % For last page reference
+
+% Geometry (A4 is default, but good to be explicit if needed, though class handles it usually)
+\RequirePackage[margin=2.5cm]{geometry}
+\setlength{\marginparwidth}{2cm} % Ensure margin notes fit within the margin
+
+% Hyperref (should be loaded late)
+\RequirePackage[colorlinks=true, linkcolor=TueAIaccent, citecolor=TueAIdarkblue, urlcolor=TueAIoceangreen]{hyperref}
+\RequirePackage[capitalise]{cleveref} % Must be loaded after hyperref
+
+\AtBeginDocument{
+    \hypersetup{
+        pdftitle={\@thesistitle},
+        pdfauthor={\@thesisauthor}
+    }
+}
+
+% =============================================================================
+% Styling
+% =============================================================================
+
+% We're using good old computer modern. Section headings are in sans. 
+\titleformat{\chapter}[display]
+{\sffamily\bfseries\huge\color{TueAIdarkblue}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+{\sffamily\bfseries\Large\color{TueAIdarkblue}}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\sffamily\bfseries\large\color{TueAIdarkblue}}
+{\thesubsection}{1em}{}
+
+% Captions in sans
+\usepackage{caption,sansmath}
+\DeclareCaptionFont{sansmath}{\sansmath}
+\captionsetup{font={small,sf,sansmath}}
+\captionsetup[algorithm]{font={small,sf,sansmath}}
+
+% =============================================================================
+% Headers and Footers
+% =============================================================================
+
+\setlength{\headheight}{20pt} % Fix fancyhdr warning
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+
+\renewcommand{\headrulewidth}{0pt}
+% Header: 
+\fancyhead[LE]{\textcolor{TueAIdarkblue}{\sffamily \@thesistitle}}
+\fancyhead[LO]{\textcolor{TueAIdarkblue}{\sffamily \@thesisauthor}}
+\fancyhead[RE]{\textcolor{TueAIdarkblue}{\sffamily \if@master Master Thesis\else Bachelor Thesis\fi}}
+\fancyhead[RO]{\includegraphics[height=\baselineskip]{tuebingen_cs_thesis/assets/TUEAI_Symbol_RGB.pdf}}
+
+% Footer: Page Number 
+\fancyfoot[R]{p.~\thepage~of~\pageref*{LastPage}}
+
+% Redefine plain style (used on chapter pages) to match footer
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[R]{p.~\thepage~of~\pageref*{LastPage}}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% =============================================================================
+% Metadata Macros
+% =============================================================================
+
+\newcommand{\@thesistitle}{}
+\newcommand{\thesistitle}[1]{\renewcommand{\@thesistitle}{#1}}
+
+\newcommand{\@thesisauthor}{}
+\newcommand{\thesisauthor}[1]{\renewcommand{\@thesisauthor}{#1}}
+
+\newcommand{\@studentid}{}
+\newcommand{\studentid}[1]{\renewcommand{\@studentid}{#1}}
+
+\newcommand{\@degreecourse}{}
+\newcommand{\degreecourse}[1]{\renewcommand{\@degreecourse}{#1}}
+
+\newcommand{\@advisors}{}
+\newcommand{\advisors}[1]{\renewcommand{\@advisors}{#1}}
+
+\newcommand{\@examinerone}{}
+\newcommand{\examinerone}[1]{\renewcommand{\@examinerone}{#1}}
+
+\newcommand{\@examinertwo}{}
+\newcommand{\examinertwo}[1]{\renewcommand{\@examinertwo}{#1}}
+
+\newcommand{\@startdate}{}
+\newcommand{\startdate}[1]{\renewcommand{\@startdate}{#1}}
+
+\newcommand{\@submissiondate}{}
+\newcommand{\submissiondate}[1]{\renewcommand{\@submissiondate}{#1}}
+
+\newcommand{\@abstractenglish}{}
+\newcommand{\abstractenglish}[1]{\renewcommand{\@abstractenglish}{#1}}
+
+\newcommand{\@abstractgerman}{}
+\newcommand{\abstractgerman}[1]{\renewcommand{\@abstractgerman}{#1}}
+
+\def\@acknowledgments{}
+\newcommand{\acknowledgments}[1]{\def\@acknowledgments{#1}}
+
+% Itemizations, Enumerations and Descriptions
+\newcommand{\tueitem}[1][TueAIlightblue]{%
+    \begin{tikzpicture}[baseline=(current bounding box.south)]
+        \fill[fill=#1,scale=\baselineskip * 0.12] (-0.424853,-.930) -- (-.333,-.967264) -- (-.333,-1.11178) -- (-.424853,-1.09059) -- cycle;
+    \end{tikzpicture}}
+
+\renewcommand{\labelitemi}{\tueitem[TueAIaccent]}
+\renewcommand{\labelitemii}{\tueitem[TueAIlightblue]}
+\renewcommand{\labelitemiii}{\tueitem[TueAIoceanblue]}
+
+% =============================================================================
+% Title Page and Front Matter
+% =============================================================================
+
+\newcommand{\makeTueAIfrontmatter}{
+    \begin{titlepage}
+        \centering
+        \vspace*{5cm}
+        {\sffamily\bfseries\Huge \textcolor{TueAIdarkblue}{\@thesistitle} \par}
+        \vspace{1cm}
+        {\Large \textcolor{TueAIdark}{\if@master Master Thesis\else Bachelor Thesis\fi\ in \@degreecourse} \par}
+        \vspace{2cm}
+        {\Large \textcolor{TueAIaccent}{\@thesisauthor} \par}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.3\textwidth]{tuebingen_cs_thesis/assets/TUEAI_Logo_stacked-URL-maxi_RGB.pdf}
+        \end{center}
+        \vfill
+        {\large \textcolor{TueAIdark}{University of Tübingen} \par}
+        \vspace{1cm}
+        \textcolor{TueAIdark}{\@submissiondate}
+    \end{titlepage}
+
+    % Page 2: Info Dump
+    \clearpage
+    \thispagestyle{empty}
+    \begingroup
+    \raggedright
+    \noindent
+    \textcolor{TueAIaccent}{\textbf{\@thesisauthor}} \\
+    \textcolor{TueAIdarkblue}{\textbf{\@thesistitle}} \\
+    \textcolor{TueAIdark}{\if@master Master Thesis \else Bachelor Thesis \fi \\
+        University of Tübingen \\
+        Tübingen AI Center \\[1cm]}
+
+    \vfill
+
+    \begin{tabular}{>{\color{TueAIdarkblue}}r>{\color{TueAIaccent}}l}
+        \textbf{Matriculation Number:}       & \@studentid      \\
+        \textbf{Degree Course:}              & \@degreecourse   \\
+        \textbf{Advisors:}                   & \@advisors       \\
+        \textbf{First Examiner:}             & \@examinerone    \\
+        \if@master \textbf{Second Examiner:} & \@examinertwo    \\ \fi
+        \textbf{Start Date:}                 & \@startdate      \\
+        \textbf{Submission Date:}            & \@submissiondate \\
+    \end{tabular}
+    \par
+    \endgroup \vspace{2cm}
+    \noindent
+    % Page 3: Declaration
+    \declarationofauthorship
+
+    % Page 4: AI Declaration
+    \declarationofai
+
+    \newpage
+    \thispagestyle{plain}
+    \begin{center}
+        {\sffamily\bfseries\Large \textcolor{TUdark}{Abstract} \par}
+    \end{center}
+    \@abstractenglish
+
+    \vfill
+    \begin{center}
+        {\sffamily\bfseries\Large \textcolor{TUdark}{Zusammenfassung} \par}
+    \end{center}
+    \@abstractgerman
+
+    \vfill
+
+    \newpage
+
+    \ifx\@acknowledgments\@empty
+    \else
+        \thispagestyle{plain}
+        \begin{center}
+            {\sffamily\bfseries\Large \textcolor{TUdark}{\if@german Danksagung\else Acknowledgments\fi} \par}
+        \end{center}
+        \@acknowledgments
+        \newpage
+    \fi
+
+    \tableofcontents
+    \newpage
+}
+
+\input{tuebingen_cs_thesis/declarations.tex}
+
+\endinput

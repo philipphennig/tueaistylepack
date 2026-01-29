@@ -1,0 +1,135 @@
+\documentclass[11pt, a4paper, twoside]{report}
+
+% Load the package with options
+% Options: master/bachelor, english/german
+\usepackage[master, english]{tuebingen_cs_thesis/tuebingen_cs_thesis}
+
+% Optional: Todo notes
+\usepackage[color=TueAIaccent, textsize=tiny, textwidth=2cm]{todonotes}
+
+% Metadata
+\thesistitle{Deep Learning on Manifolds}
+\thesisauthor{Gabriele Musterfrau}
+\studentid{1234567}
+\degreecourse{Machine Learning}
+\advisors{Dr.~Frank Schneider}
+\examinerone{Prof.~Dr.~Philipp Hennig}
+\examinertwo{Prof.~Dr.~Matthias Hein}
+\startdate{October 1, 2025}
+\submissiondate{30.09.2024}
+
+\abstractenglish{
+    This is the English abstract. It should provide a concise summary of the thesis, including the problem statement, methods, results, and conclusions.
+}
+
+\abstractgerman{
+    Dies ist die deutsche Zusammenfassung. Sie sollte eine prägnante Zusammenfassung der Arbeit enthalten, einschließlich der Problemstellung, der Methoden, der Ergebnisse und der Schlussfolgerungen.
+}
+
+\acknowledgments{
+    This is the acknowledgments section. It should contain a list of people who have helped you with your thesis, including your advisors, examiners, and other important people.
+
+    If you do \emph{not} want to include an acknowledgments section, you can simply remove this command here, or leave it empty (actually empty, though, not a whitespace).
+}
+
+\usepackage{kantlipsum} % this package is only for lorem ipsum, and can be safely removed when writing the actual thesis
+
+\begin{document}
+
+\makeTueAIfrontmatter
+
+% Main content
+\chapter{Introduction}
+This is a minimal working example of the thesis template.
+The font should be Computer Modern Roman. The text is single-column, with a width of \the\textwidth.
+
+\section{Section Heading}
+This heading should be in Computer Modern Sans Serif.
+
+\subsection{Subsection Heading}
+This is a subsection.
+
+\section{Colors}
+This is the color scheme of the AI Center:
+\begin{itemize}
+    \item \textcolor{TueAIdark}{TueAIdark}
+    \item \textcolor{TueAIgray}{TueAIgray}
+    \item \textcolor{TueAIdarkblue}{TueAIdarkblue}
+    \item \textcolor{TueAIaccent}{TueAIaccent}
+    \item \textcolor{TueAIlightblue}{TueAIlightblue}
+    \item \textcolor{TueAIoceanblue}{TueAIoceanblue}
+    \item \textcolor{TueAIoceangreen}{TueAIoceangreen}
+    \item \textcolor{TueAIspringgreen}{TueAIspringgreen}
+    \item \textcolor{TueAIbrightyellow}{TueAIbrightyellow}
+\end{itemize}
+
+You can also/additionally use the color scheme of the University of Tübingen. It provides more colors (in particular more dark color variants, which are easier to see, e.g. for thin lines in plots). The two color schemes are designed to not clash (too much) with each other:
+\begin{itemize}
+    \item Primary Colors:
+          \begin{itemize}
+              \item \textcolor{TUred}{TUred}
+              \item \textcolor{TUgold}{TUgold}
+              \item \textcolor{TUdark}{TUdark}
+              \item \textcolor{TUgray}{TUgray}
+          \end{itemize}
+    \item Secondary Colors:
+          \begin{itemize}
+              \item \textcolor{TUdarkblue}{TUdarkblue}
+              \item \textcolor{TUblue}{TUblue}
+              \item \textcolor{TUlightblue}{TUlightblue}
+              \item \textcolor{TUlightgreen}{TUlightgreen}
+              \item \textcolor{TUgreen}{TUgreen}
+              \item \textcolor{TUdarkgreen}{TUdarkgreen}
+              \item \textcolor{TUocre}{TUocre}
+              \item \textcolor{TUviolet}{TUviolet}
+              \item \textcolor{TUmauve}{TUmauve}
+              \item \textcolor{TUbeige}{TUbeige}
+              \item \textcolor{TUorange}{TUorange}
+              \item \textcolor{TUbrown}{TUbrown}
+          \end{itemize}
+\end{itemize}
+
+\section{Tables}
+Here is an example table using \texttt{booktabs}:
+\begin{table}[ht]
+    \centering
+    \caption{A nice table example.}
+    \label{tab:example}
+    \begin{tabular}{llr}
+        \toprule
+        \multicolumn{2}{c}{Item} &                          \\
+        \cmidrule(r){1-2}
+        Animal                   & Description & Price (\$) \\
+        \midrule
+        Gnat                     & per gram    & 13.65      \\
+                                 & each        & 0.01       \\
+        Gnu                      & stuffed     & 92.50      \\
+        Emu                      & stuffed     & 33.33      \\
+        Armadillo                & frozen      & 8.99       \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Figures}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics{../tueplots-demo/tueplots_example_tue_ai_thesis.pdf}
+    \caption{A univariate Gaussian Process, generated using \texttt{tueplots} to match the thesis layout exactly. See \texttt{scripts/plot\_gp.py}.}
+    \label{fig:gp}
+\end{figure}
+
+\section{Citations and References}
+We can cite conference papers \citep{gatys2016image}, journal papers \citep{von2008consistency} or books like \citet{scholkopf2002learning}.
+Also, we can refer to \cref{tab:example} and \cref{fig:gp} using \texttt{cleveref}. A link to an externel document \href{https://tuebingen.ai}{looks like this}
+\todo{This is a margin todo note.}\todo[inline]{This is an inline todo note.}
+
+
+\section{More Text}
+
+\kant[1-25]
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
