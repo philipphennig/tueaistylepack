@@ -64,6 +64,7 @@ and that that `icml_2026/` is the working directory (otherwise, execute `cd icml
     If you work with Visual Studio Code, adding
     ```TeX
     %!LW recipe=latexmk (latexmkrc)
+    ```
     as the first line in `icml_2026/slides.tex` will ensure that LaTeX Workshop compiles the document using the information provided in `icml_2026/latexmkrc`.
 
 ## Fonts
